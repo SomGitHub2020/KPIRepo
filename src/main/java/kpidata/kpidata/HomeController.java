@@ -29,14 +29,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-	 List<Customer> lstCustomers = new ArrayList<Customer>();
-	 List<Oee> lstOees = new ArrayList<Oee>();
+	 
 	  
 	  @PostConstruct
 	    public void init() throws Exception {
 		 //String ActualQty = Math.random().nextInt;
 		  //random.//
 		  //String ActualQty = String.valueOf(new Random().nextInt(25));
+		  
+		  List<Customer> lstCustomers = new ArrayList<Customer>();
+			 List<Oee> lstOees = new ArrayList<Oee>();
+			 
 	    lstCustomers.add(new Customer(String.valueOf(new Random().nextInt(25)), new Random().nextInt(25)));
 	    lstOees.add(new Oee("87.5", "75.2", "91.4"));
 	    }
@@ -48,6 +51,13 @@ public class HomeController {
 	  
 	  @GetMapping("/customer")
 	    public String getCustomer(Model model) {
+		  
+		  List<Customer> lstCustomers = new ArrayList<Customer>();
+			 List<Oee> lstOees = new ArrayList<Oee>();
+		  
+		    lstCustomers.add(new Customer(String.valueOf(new Random().nextInt(25)), new Random().nextInt(45)));
+		    lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+		  
 	        model.addAttribute("customers", lstCustomers);
 	        model.addAttribute("oees", lstOees);
 	        return "customer/display";
