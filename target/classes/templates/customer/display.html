@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-  <title>SpringMVC + Thymeleaf + Bootstrap 4 Table Example</title>
+  <title>KPI Dashboard</title>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
@@ -12,26 +12,22 @@
  
 <body>
 <div class="container">
-	<h1>Customer Table</h1>
+	<h2>Actuaal Qty Vs. Target Qty</h2>
 	<div class="row col-md-7 table-responsive">
 		<table id="customerTable" class="table">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Name</th>
-					<th>Age</th>
-					<th>Street</th>
-					<th>Postcode</th>
+					<th>Actual Qty</th>
+					<th>Target Qty</th>
+
 				</tr>
 			</thead>
 			<tbody>
 				 <tr th:each="customer, rowStat: ${customers}"
 				 	 th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
-			        <td th:text="${customer.id}">1</td>
+			        
 					<td th:text="${customer.name}">Jack</td>
 			        <td th:text="${customer.age}">23</td>
-			        <td th:text="${customer.address.street}">AVE N</td>
-			        <td th:text="${customer.address.postcode}">77587</td>
 			    </tr>
 			</tbody>
 		</table>

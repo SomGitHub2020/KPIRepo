@@ -8,11 +8,11 @@ public class Customer{
 	  
 	  public Customer(){}
 	  
-	  public Customer(Long id, String name, Integer age, Address address){
-	    this.id = id;
+	  public Customer(String name, Integer age){
+	    
 	    this.name = name;
 	    this.age = age;
-	    this.address = address;
+	   
 	  }
 	 
 	  public Long getId() {
