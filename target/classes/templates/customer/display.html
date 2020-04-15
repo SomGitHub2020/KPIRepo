@@ -12,9 +12,9 @@
  
 <body>
 <div class="container">
-	<h2>Actuaal Qty Vs. Target Qty</h2>
+	<h2>KPI Analysis</h2>
 	<div class="row col-md-7 table-responsive">
-		<table id="customerTable" class="table">
+		<table id="QtyTable" class="table">
 			<thead>
 				<tr>
 					<th>Actual Qty</th>
@@ -29,6 +29,27 @@
 					<td th:text="${customer.name}">Jack</td>
 			        <td th:text="${customer.age}">23</td>
 			    </tr>
+			</tbody>
+		</table>
+
+
+		<table id="OEETable" class="table">
+			<thead>
+				<tr>
+					<th>Availability</th>
+					<th>Quality</th>
+					<th>Performance</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="oee, rowStat: ${oees}"
+					th:style="${rowStat.odd} ? 'color: gray' : 'color: red;'">
+
+					<td th:text="${oee.avail}">Jack</td>
+					<td th:text="${oee.qual}">23</td>
+					<td th:text="${oee.perf}">23</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

@@ -29,11 +29,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
 	 List<Customer> lstCustomers = new ArrayList<Customer>();
+	 List<Oee> lstOees = new ArrayList<Oee>();
 	  
 	  @PostConstruct
 	    public void init() throws Exception {
 	    lstCustomers.add(new Customer("30.5", 27));
-
+	    lstOees.add(new Oee("87.5", "75.2", "91.4"));
 	    }
 	 
 	  @GetMapping
@@ -44,6 +45,7 @@ public class HomeController {
 	  @GetMapping("/customer")
 	    public String getCustomer(Model model) {
 	        model.addAttribute("customers", lstCustomers);
+	        model.addAttribute("oees", lstOees);
 	        return "customer/display";
 	    }
 }
