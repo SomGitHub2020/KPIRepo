@@ -17,6 +17,7 @@ package kpidata.kpidata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
@@ -33,7 +34,10 @@ public class HomeController {
 	  
 	  @PostConstruct
 	    public void init() throws Exception {
-	    lstCustomers.add(new Customer("30.5", 27));
+		 //String ActualQty = Math.random().nextInt;
+		  //random.//
+		  //String ActualQty = String.valueOf(new Random().nextInt(25));
+	    lstCustomers.add(new Customer(String.valueOf(new Random().nextInt(25)), new Random().nextInt(25)));
 	    lstOees.add(new Oee("87.5", "75.2", "91.4"));
 	    }
 	 
