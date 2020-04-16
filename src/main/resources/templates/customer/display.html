@@ -8,12 +8,46 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 	<style>
 	table, th, td {
 		border: 1px solid black;
 	}
 	</style>
+	
+	<script type="text/javascript">
+		
+		window.onload = function() {
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title : {
+					text : "My First Chart in CanvasJS"
+				},
+				data : [ {
+					// Change type to "doughnut", "line", "splineArea", etc.
+					type : "column",
+					dataPoints : [ {
+						label : "apple",
+						y : 10
+					}, {
+						label : "orange",
+						y : 15
+					}, {
+						label : "banana",
+						y : 25
+					}, {
+						label : "mango",
+						y : 30
+					}, {
+						label : "grape",
+						y : 28
+					} ]
+				} ]
+			});
+			chart.render();
+		}
+	</script>
 
 </head>
  
@@ -71,5 +105,6 @@
 			</table>
 		</div>
 </div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 </body>
 </html>
