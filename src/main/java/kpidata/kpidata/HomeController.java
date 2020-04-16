@@ -41,7 +41,7 @@ public class HomeController {
 			 List<Oee> lstOees = new ArrayList<Oee>();
 			 
 	    lstCustomers.add(new Customer(String.valueOf(new Random().nextInt(25)), new Random().nextInt(25)));
-	    lstOees.add(new Oee("87.5", "75.2", "91.4"));
+	    lstOees.add(new Oee("85", "73", "92"));
 	    }
 	 
 	  @GetMapping
@@ -56,7 +56,8 @@ public class HomeController {
 			 List<Oee> lstOees = new ArrayList<Oee>();
 		  
 		    lstCustomers.add(new Customer(String.valueOf(new Random().nextInt(25)), new Random().nextInt(45)));
-		    lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+		    //lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+		    lstOees.add(new Oee("85", "73", "92"));
 		  
 	        model.addAttribute("customers", lstCustomers);
 	        model.addAttribute("oees", lstOees);

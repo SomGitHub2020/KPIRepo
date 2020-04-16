@@ -22,26 +22,23 @@
 		window.onload = function() {
 			var chart = new CanvasJS.Chart("chartContainer", {
 				title : {
-					text : "My First Chart in CanvasJS"
+					text : ""
 				},
 				data : [ {
 					// Change type to "doughnut", "line", "splineArea", etc.
 					type : "column",
 					dataPoints : [ {
-						label : "apple",
-						y : 10
+						label : "OEE",
+						y : 57
 					}, {
-						label : "orange",
-						y : 15
+						label : "Availablity",
+						y : 85
 					}, {
-						label : "banana",
-						y : 25
+						label : "Quality",
+						y : 92
 					}, {
-						label : "mango",
-						y : 30
-					}, {
-						label : "grape",
-						y : 28
+						label : "Performance",
+						y : 73
 					} ]
 				} ]
 			});
@@ -105,6 +102,7 @@
 			</table>
 		</div>
 </div>
+<div class="" align="center" style="background-color:#ffe680"> OEE Chart </div>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 </body>
 </html>
