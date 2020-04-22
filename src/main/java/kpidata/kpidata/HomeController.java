@@ -37,10 +37,10 @@ public class HomeController {
 		  //random.//
 		  //String ActualQty = String.valueOf(new Random().nextInt(25));
 		  
-		  List<Customer> lstCustomers = new ArrayList<Customer>();
+		  List<OrderDetail> lstOrderDetails = new ArrayList<OrderDetail>();
 			 List<Oee> lstOees = new ArrayList<Oee>();
 			 
-	    lstCustomers.add(new Customer(String.valueOf(new Random().nextInt(25)), new Random().nextInt(25)));
+	    lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(25))));
 	    lstOees.add(new Oee("85", "73", "92"));
 	    }
 	 
@@ -52,14 +52,14 @@ public class HomeController {
 	  @GetMapping("/customer")
 	    public String getCustomer(Model model) {
 		  
-		  List<Customer> lstCustomers = new ArrayList<Customer>();
+		  List<OrderDetail> lstOrderDetails = new ArrayList<OrderDetail>();
 			 List<Oee> lstOees = new ArrayList<Oee>();
 		  
-		    lstCustomers.add(new Customer(String.valueOf(new Random().nextInt(25)), new Random().nextInt(45)));
+		    lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
 		    //lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
 		    lstOees.add(new Oee("85", "73", "92"));
 		  
-	        model.addAttribute("customers", lstCustomers);
+	        model.addAttribute("orderdetails", lstOrderDetails);
 	        model.addAttribute("oees", lstOees);
 	        return "customer/display";
 	    }

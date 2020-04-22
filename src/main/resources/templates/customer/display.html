@@ -66,11 +66,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="customer, rowStat: ${customers}"
+								<tr th:each="orderdetail, rowStat: ${orderdetails}"
 									th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 
-									<td th:text="${customer.name}">Jack</td>
-									<td th:text="${customer.age}">23</td>
+									<td th:text="${orderdetail.actual}">Jack</td>
+									<td th:text="${orderdetail.target}">23</td>
 								</tr>
 							</tbody>
 						</table>
