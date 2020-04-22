@@ -66,12 +66,8 @@ public class HomeController {
 	  	@PostMapping("/customer")
 	  	public void getOrderData(@ModelAttribute OrderDetail orderdetail) {
 		  
-	  	  try {
-			  orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	  	  //orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+		  orderdetail.setOrdernum("OCP_ORDER_TEST");
 		  
 		 
 	  	}
