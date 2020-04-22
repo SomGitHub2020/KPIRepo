@@ -25,8 +25,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -41,6 +39,17 @@ public class HomeController {
 		  
 		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		  List<Oee> lstOees = new ArrayList<Oee>();
+		  
+		  OrderDetail orderdetail = new OrderDetail();
+		  
+			try {
+				orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			model.addAttribute("orderdetail",orderdetail);
 		  
 		  //lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
 		  
@@ -63,20 +72,6 @@ public class HomeController {
 		  return "customer/display";
 	    }
 	  
-	  	
-	  @PostMapping("/customer")
-	  	public void getOrderData(@ModelAttribute OrderDetail orderdetail) {
-		  
-			try {
-				orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		  
-		 
-	  	}
-	  
 	  
 	  @PostConstruct
 	    public void init() throws Exception {
@@ -84,9 +79,12 @@ public class HomeController {
 		  //random.//
 		  //String ActualQty = String.valueOf(new Random().nextInt(25));
 
+		  OrderDetail orderdetail = new OrderDetail();
+		  orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+
 		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		  List<Oee> lstOees = new ArrayList<Oee>();
-
+		  
 		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		  shopOrderDetails.getOrderQuantities(lstOrderQtys);
 		  lstOees.add(new Oee("85", "73", "92"));
