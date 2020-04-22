@@ -19,7 +19,7 @@ import org.xml.sax.SAXException;
 
 public class ShopOrderDetails {
 
-	public void getOrderQuantities(List<OrderDetail> lstOrderDetails) throws IOException{
+	public void getOrderQuantities(List<OrderQty> lstOrderQtys) throws IOException{
 		
 		  String stringURL = "http://9.220.9.130:50200/XMII/Illuminator?IsTesting=T&QueryTemplate=Default/Som/OCP_KPI/ProductionOrder/SQL_GetShopOrderDetails&Content-Type=text/xml&IllumLoginName=som&IllumLoginPassword=password@1";
 		  
@@ -62,7 +62,7 @@ public class ShopOrderDetails {
 	         line = (Element) actual.item(0);
 	         String Actual = getCharacterDataFromElement(line);
     
-	         lstOrderDetails.add(new OrderDetail(Actual,Target));
+	         lstOrderQtys.add(new OrderQty(Actual,Target));
 	         
 	         
 				System.out.print(i);

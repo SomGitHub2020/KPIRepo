@@ -39,14 +39,14 @@ public class HomeController {
 	  @GetMapping("/customer")
 	    public String getCustomer(Model model) {
 		  
-		  List<OrderDetail> lstOrderDetails = new ArrayList<OrderDetail>();
+		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		  List<Oee> lstOees = new ArrayList<Oee>();
 
 		  //lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
 		  
 		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		  try {
-			shopOrderDetails.getOrderQuantities(lstOrderDetails);
+			shopOrderDetails.getOrderQuantities(lstOrderQtys);
 			//orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
 			
 			
@@ -58,7 +58,7 @@ public class HomeController {
 		  //lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
 		  lstOees.add(new Oee("85", "73", "92"));
 
-		  model.addAttribute("orderdetails", lstOrderDetails);
+		  model.addAttribute("orderqtys", lstOrderQtys);
 		  model.addAttribute("oees", lstOees);
 		  return "customer/display";
 	    }
@@ -79,11 +79,11 @@ public class HomeController {
 		  //random.//
 		  //String ActualQty = String.valueOf(new Random().nextInt(25));
 
-		  List<OrderDetail> lstOrderDetails = new ArrayList<OrderDetail>();
+		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		  List<Oee> lstOees = new ArrayList<Oee>();
 
 		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
-		  shopOrderDetails.getOrderQuantities(lstOrderDetails);
+		  shopOrderDetails.getOrderQuantities(lstOrderQtys);
 		  lstOees.add(new Oee("85", "73", "92"));
 	    }
 }
