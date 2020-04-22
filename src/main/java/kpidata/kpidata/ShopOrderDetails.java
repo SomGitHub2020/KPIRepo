@@ -61,10 +61,10 @@ public class ShopOrderDetails {
 	         NodeList actual = element.getElementsByTagName("QTY_DONE");
 	         line = (Element) actual.item(0);
 	         String Actual = getCharacterDataFromElement(line);
-	         
     
 	         lstOrderDetails.add(new OrderDetail(Actual,Target));
-				
+	         
+	         
 				System.out.print(i);
 
 	      }
@@ -80,5 +80,53 @@ public class ShopOrderDetails {
 		    }
 		    return "?";
 		  }
+
+	 public String getOrderData() throws IOException  {
+		
+		 String stringURL = "http://9.220.9.130:50200/XMII/Illuminator?IsTesting=T&QueryTemplate=Default/Som/OCP_KPI/ProductionOrder/SQL_GetShopOrderDetails&Content-Type=text/xml&IllumLoginName=som&IllumLoginPassword=password@1";
+		  
+		  	URL url = new URL(stringURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		
+			InputStream in = conn.getInputStream();
+			
+	      DocumentBuilderFactory dbf =
+	          DocumentBuilderFactory.newInstance();
+	      DocumentBuilder db = null;
+			try {
+				db = dbf.newDocumentBuilder();
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	      
+	      Document doc = null;
+			try {
+				doc = (Document) db.parse(in);
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	      
+			NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("Row");
+			//NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("TimeZoneResponse");
+	      
+	      // iterate the employees
+			String OrderNum = null;
+	      for (int i = 0; i < nodes.getLength(); i++) {
+	         Element element = (Element) nodes.item(i);
+	         
+	 	         
+	         NodeList ordernum1 = element.getElementsByTagName("SHOP_ORDER");
+	         Element line = (Element) ordernum1.item(0);
+	          OrderNum = getCharacterDataFromElement(line);
+ 
+	      }
+		return OrderNum;
+        
+		
+
+		
+	}
 	
 }

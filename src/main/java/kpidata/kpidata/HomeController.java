@@ -18,13 +18,15 @@ package kpidata.kpidata;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+//import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -45,6 +47,9 @@ public class HomeController {
 		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		  try {
 			shopOrderDetails.getOrderQuantities(lstOrderDetails);
+			//orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,6 +62,19 @@ public class HomeController {
 		  model.addAttribute("oees", lstOees);
 		  return "customer/display";
 	    }
+	  
+	  	@PostMapping("/customer")
+	  	public void getOrderData(@ModelAttribute OrderDetail orderdetail) {
+		  
+	  	  try {
+			  orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
+		 
+	  	}
 	  
 	  @PostConstruct
 	    public void init() throws Exception {
