@@ -15,6 +15,7 @@
  */
 package kpidata.kpidata;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,25 +26,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
 public class HomeController {
 
-	 
-	  
-	  @PostConstruct
-	    public void init() throws Exception {
-		 //String ActualQty = Math.random().nextInt;
-		  //random.//
-		  //String ActualQty = String.valueOf(new Random().nextInt(25));
-		  
-		  List<OrderDetail> lstOrderDetails = new ArrayList<OrderDetail>();
-			 List<Oee> lstOees = new ArrayList<Oee>();
-			 
-	    lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(25))));
-	    lstOees.add(new Oee("85", "73", "92"));
-	    }
-	 
 	  @GetMapping
 	  public String index() {
 	    return "redirect:/customer";
@@ -53,14 +38,37 @@ public class HomeController {
 	    public String getCustomer(Model model) {
 		  
 		  List<OrderDetail> lstOrderDetails = new ArrayList<OrderDetail>();
-			 List<Oee> lstOees = new ArrayList<Oee>();
+		  List<Oee> lstOees = new ArrayList<Oee>();
+
+		  //lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
 		  
-		    lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
-		    //lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
-		    lstOees.add(new Oee("85", "73", "92"));
+		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+		  try {
+			shopOrderDetails.getOrderQuantities(lstOrderDetails);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		  
-	        model.addAttribute("orderdetails", lstOrderDetails);
-	        model.addAttribute("oees", lstOees);
-	        return "customer/display";
+		  //lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+		  lstOees.add(new Oee("85", "73", "92"));
+
+		  model.addAttribute("orderdetails", lstOrderDetails);
+		  model.addAttribute("oees", lstOees);
+		  return "customer/display";
+	    }
+	  
+	  @PostConstruct
+	    public void init() throws Exception {
+		 //String ActualQty = Math.random().nextInt;
+		  //random.//
+		  //String ActualQty = String.valueOf(new Random().nextInt(25));
+
+		  List<OrderDetail> lstOrderDetails = new ArrayList<OrderDetail>();
+		  List<Oee> lstOees = new ArrayList<Oee>();
+
+		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+		  shopOrderDetails.getOrderQuantities(lstOrderDetails);
+		  lstOees.add(new Oee("85", "73", "92"));
 	    }
 }
