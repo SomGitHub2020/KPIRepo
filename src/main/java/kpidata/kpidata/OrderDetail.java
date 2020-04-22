@@ -2,7 +2,7 @@ package kpidata.kpidata;
 
 public class OrderDetail{
 	  
-	private String ordernum;
+	
 	private String actual;
 	private String target;
 
@@ -16,14 +16,7 @@ public class OrderDetail{
 
 	}
 
-	public String getOrdernum() {
-		return ordernum;
-	}
 
-	public void setOrdernum(String ordernum) {
-		this.ordernum = ordernum;
-	}
-	
 	public String getActual() {
 		return actual;
 	}

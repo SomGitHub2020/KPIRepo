@@ -63,14 +63,15 @@ public class HomeController {
 		  return "customer/display";
 	    }
 	  
-	  	@PostMapping("/customer")
+	  /*	
+	  @PostMapping("/customer")
 	  	public void getOrderData(@ModelAttribute OrderDetail orderdetail) {
 		  
-	  	  //orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
-		  orderdetail.setOrdernum("OCP_ORDER_TEST");
+	
 		  
 		 
 	  	}
+	  */
 	  
 	  @PostConstruct
 	    public void init() throws Exception {
