@@ -41,13 +41,13 @@ public class HomeController {
 		  
 		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		  List<Oee> lstOees = new ArrayList<Oee>();
-
+		  
 		  //lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
 		  
 		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		  try {
 			shopOrderDetails.getOrderQuantities(lstOrderQtys);
-			//orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+			
 			
 			
 		} catch (IOException e) {
@@ -63,15 +63,20 @@ public class HomeController {
 		  return "customer/display";
 	    }
 	  
-	  /*	
+	  	
 	  @PostMapping("/customer")
 	  	public void getOrderData(@ModelAttribute OrderDetail orderdetail) {
 		  
-	
+			try {
+				orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		  
 		 
 	  	}
-	  */
+	  
 	  
 	  @PostConstruct
 	    public void init() throws Exception {
