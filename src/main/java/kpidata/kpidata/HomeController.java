@@ -80,12 +80,14 @@ public class HomeController {
 		  //random.//
 		  //String ActualQty = String.valueOf(new Random().nextInt(25));
 
-
-
+		  OrderDetail orderdetail = new OrderDetail();
+          orderdetail = new ShopOrderDetails().getOrderData();
+          
 		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		  List<Oee> lstOees = new ArrayList<Oee>();
 		  
 		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+		  
 		  shopOrderDetails.getOrderQuantities(lstOrderQtys);
 		  
 		  lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));

@@ -111,22 +111,24 @@ public class ShopOrderDetails {
 			NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("Row");
 			//NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("TimeZoneResponse");
 	      
-	      // iterate the employees
-			OrderDetail orderdetail = new OrderDetail(); 
-			
-	      for (int i = 0; i < nodes.getLength(); i++) {
-	         Element element = (Element) nodes.item(i);
-	         
-	 	         
-	         NodeList ordernum1 = element.getElementsByTagName("SHOP_ORDER");
-	         Element line = (Element) ordernum1.item(0);
-	          orderdetail.setOrdernum(getCharacterDataFromElement(line));
+			OrderDetail orderdetail = new OrderDetail();
+
+	        for (int i = 0; i < nodes.getLength(); i++) {
+	            Element element = (Element) nodes.item(i);
+	            
 	          
-	          NodeList material = element.getElementsByTagName("ITEM");
-		         line = (Element) material.item(0);
-		          orderdetail.setMaterial(getCharacterDataFromElement(line));
- 
-	      }
+	            
+	           NodeList nodelist = element.getElementsByTagName("SHOP_ORDER");
+	            Element elem = (Element) nodelist.item(0);
+	            //OrderNum = getCharacterDataFromElement(line);
+	            orderdetail.setOrdernum(getCharacterDataFromElement(elem));
+	            
+	            nodelist = element.getElementsByTagName("ITEM_BO");
+	            elem = (Element) nodelist.item(0);
+	            //OrderNum = getCharacterDataFromElement(line);
+	            orderdetail.setMaterial(getCharacterDataFromElement(elem).replaceFirst("ItemBO:PPME,", ""));
+
+	        }
 		
 	      return orderdetail;
         
