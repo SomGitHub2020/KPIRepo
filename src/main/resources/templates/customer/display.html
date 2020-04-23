@@ -1,111 +1,109 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-  <title>KPI Dashboard</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <html lang="en" xmlns:th="https://www.thymeleaf.org">
+ <head>
+   <title>KPI Dashboard</title>
+   <meta charset="utf-8"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   
-  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-	<style>
-	table, th, td {
-		border: 1px solid black;
-	}
-	</style>
-	
-	<script type="text/javascript">
-		
-		window.onload = function() {
-			var chart = new CanvasJS.Chart("chartContainer", {
-				title : {
-					text : ""
-				},
-				data : [ {
-					// Change type to "doughnut", "line", "splineArea", etc.
-					type : "column",
-					dataPoints : [ {
-						label : "OEE",
-						y : 57
-					}, {
-						label : "Availablity",
-						y : 85
-					}, {
-						label : "Quality",
-						y : 73
-					}, {
-						label : "Performance",
-						y : 92
-					} ]
-				} ]
-			});
-			chart.render();
-		}
-	</script>
+    <style>
+     table, th, td {
+         border: 1px solid black;
+     }
+     </style>
+     
+     <script type="text/javascript">
+         
+         window.onload = function() {
+             var chart = new CanvasJS.Chart("chartContainer", {
+                 title : {
+                     text : ""
+                 },
+                 data : [ {
+                     // Change type to "doughnut", "line", "splineArea", etc.
+                     type : "column",
+                     dataPoints : [ {
+                         label : "OEE",
+                         y : 57
+                     }, {
+                         label : "Availablity",
+                         y : 85
+                     }, {
+                         label : "Quality",
+                         y : 73
+                     }, {
+                         label : "Performance",
+                         y : 92
+                     } ]
+                 } ]
+             });
+             chart.render();
+         }
+     </script>
 
 </head>
- 
-<body>
-<div class="" align="center">
-	<h2>KPI Analysis</h2>
-	<div class="" align="center">
-	<div class="" align="center" style="background-color:#ffe680">
+  
+ <body>
+ <div class="" align="center">
+     <h2>KPI Analysis</h2>
+     <div class="" align="center">
+     <div class="" align="right" style="background-color:#ffe680">SITE : 9999  </div>
+             <table style="width:100%">
+                 <tr>
+                     <td>
+                     <div class="" align="center" style="background-color:#66ffff" th:text="'Production Order: ' + ${orderdetail.ordernum}">Production Order</div>
+                     <div class="" align="center" style="background-color:#66ffgg" th:text="'Material: ' + ${orderdetail.item}">Material</div>
+                         <table id="QtyTable" class="table" style="width:100%">
+                             <thead>
+                                 <tr>
+                                     <th align="center">Actual Qty</th>
+                                     <th align="center">Target Qty</th>
 
-	</div>
-			<table style="width:100%">
-				<tr>
-					<td>
-					<div class="" align="center" style="background-color:#66ffff" th:text="'Production Order: ' + ${orderdetail.ordernum}">Production Order</div>
-					<div class="" align="center" style="background-color:#660000" th:text="'Material: ' + ${orderdetail.item}">Material</div>
-						<table id="QtyTable" class="table" style="width:100%">
-							<thead>
-								<tr>
-									<th align="center">Actual Qty</th>
-									<th align="center">Target Qty</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                 <tr th:each="orderqty, rowStat: ${orderqtys}"
+                                     th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each=" rowStat: ${orderqtys}"
-									th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                                    <td th:text="${orderqty.actual}">Jack</td>
+                                     <td th:text="${orderqty.target}">23</td>
+                                 </tr>
+                             </tbody>
+                         </table>
+                     </td>
 
-									<td th:text="${orderqty.actual}">Jack</td>
-									<td th:text="${orderqty.target}">23</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
+                    <td>
+                     <div class="" align="center" style="background-color:#99ff99">Resource</div>
+                         <table id="OEETable" class="table" style="width:100%">
+                             <thead>
+                                 <tr>
+                                     <th align="center">Availability</th>
+                                     <th align="center">Quality</th>
+                                     <th align="center">Performance</th>
 
-					<td>
-					<div class="" align="center" style="background-color:#99ff99">Resource</div>
-						<table id="OEETable" class="table" style="width:100%">
-							<thead>
-								<tr>
-									<th align="center">Availability</th>
-									<th align="center">Quality</th>
-									<th align="center">Performance</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                 <tr th:each="oee, rowStat: ${oees}"
+                                     th:style="${rowStat.odd} ? 'color: gray' : 'color: red;'">
 
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="oee, rowStat: ${oees}"
-									th:style="${rowStat.odd} ? 'color: gray' : 'color: red;'">
-
-									<td th:text="${oee.avail}">Jack</td>
-									<td th:text="${oee.qual}">23</td>
-									<td th:text="${oee.perf}">23</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</div>
-</div>
-<div class="" align="center" style="background-color:#ffe680"> OEE Analysis </div>
-<div id="chartContainer" style="height: 300px; width: 100%;"></div>
-</body>
-</html>
+                                    <td th:text="${oee.avail}">Jack</td>
+                                     <td th:text="${oee.qual}">23</td>
+                                     <td th:text="${oee.perf}">23</td>
+                                 </tr>
+                             </tbody>
+                         </table>
+                     </td>
+                 </tr>
+             </table>
+         </div>
+ </div>
+ <div class="" align="center" style="background-color:#ffe680"> OEE Analysis </div>
+ <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+ </body>
+ </html>
