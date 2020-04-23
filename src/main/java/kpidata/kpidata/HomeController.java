@@ -38,39 +38,39 @@ public class HomeController {
 	  @GetMapping("/customer")
 	    public String getCustomer(Model model) {
 		  
-		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
-		  List<Oee> lstOees = new ArrayList<Oee>();
-		  
-		  OrderDetail orderdetail = new OrderDetail();
-		  
-			try {
-				orderdetail = new ShopOrderDetails().getOrderData();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			model.addAttribute("orderdetail",orderdetail);
-		  
-		  //lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
-		  
-		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
-		  try {
-			shopOrderDetails.getOrderQuantities(lstOrderQtys);
-			
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		  
-		  lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
-		  //lstOees.add(new Oee("85", "73", "92"));
+          List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
+          List<Oee> lstOees = new ArrayList<Oee>();
+          
+          OrderDetail orderdetail = new OrderDetail();
+          
+            try {
+                orderdetail = new ShopOrderDetails().getOrderData();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            
+            model.addAttribute("orderdetail",orderdetail);
+          
+          //lstOrderDetails.add(new OrderDetail(String.valueOf(new Random().nextInt(25)), String.valueOf(new Random().nextInt(45))));
+          
+          ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+          try {
+            shopOrderDetails.getOrderQuantities(lstOrderQtys);
+            
+            
+            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+          
+          lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+          //lstOees.add(new Oee("85", "73", "92"));
 
-		  model.addAttribute("orderqtys", lstOrderQtys);
-		  model.addAttribute("oees", lstOees);
-		  return "customer/display";
+         model.addAttribute("orderqtys", lstOrderQtys);
+          model.addAttribute("oees", lstOees);
+          return "customer/display";
 	    }
 	  
 	  
@@ -82,15 +82,16 @@ public class HomeController {
 
 		  OrderDetail orderdetail = new OrderDetail();
           orderdetail = new ShopOrderDetails().getOrderData();
+          //orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+
+         List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
+          List<Oee> lstOees = new ArrayList<Oee>();
           
-		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
-		  List<Oee> lstOees = new ArrayList<Oee>();
-		  
-		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
-		  
-		  shopOrderDetails.getOrderQuantities(lstOrderQtys);
-		  
-		  lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
-		  //lstOees.add(new Oee("85", "73", "92"));
+          ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+          shopOrderDetails.getOrderQuantities(lstOrderQtys);
+          
+          lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+          //lstOees.add(new Oee("85", "73", "92"));
+          
 	    }
 }
