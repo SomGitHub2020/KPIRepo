@@ -44,7 +44,7 @@ public class HomeController {
 		  OrderDetail orderdetail = new OrderDetail();
 		  
 			try {
-				orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+				orderdetail = new ShopOrderDetails().getOrderData();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -79,14 +79,19 @@ public class HomeController {
 		 //String ActualQty = Math.random().nextInt;
 		  //random.//
 		  //String ActualQty = String.valueOf(new Random().nextInt(25));
-
+ 
+		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+		  
 		  OrderDetail orderdetail = new OrderDetail();
-		  orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
+		   
+		  
+		  orderdetail = shopOrderDetails.getOrderData();
 
 		  List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		  List<Oee> lstOees = new ArrayList<Oee>();
 		  
-		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+		 
+		  
 		  shopOrderDetails.getOrderQuantities(lstOrderQtys);
 		  
 		  lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));

@@ -81,7 +81,7 @@ public class ShopOrderDetails {
 		    return "?";
 		  }
 
-	 public String getOrderData() throws IOException  {
+	 public OrderDetail getOrderData() throws IOException  {
 		
 		 String stringURL = "http://9.220.9.130:50200/XMII/Illuminator?IsTesting=T&QueryTemplate=Default/Som/OCP_KPI/ProductionOrder/SQL_GetShopOrderDetails&Content-Type=text/xml&IllumLoginName=som&IllumLoginPassword=password@1";
 		  
@@ -112,17 +112,23 @@ public class ShopOrderDetails {
 			//NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("TimeZoneResponse");
 	      
 	      // iterate the employees
-			String OrderNum = null;
+			OrderDetail orderdetail = new OrderDetail(); 
+			
 	      for (int i = 0; i < nodes.getLength(); i++) {
 	         Element element = (Element) nodes.item(i);
 	         
 	 	         
 	         NodeList ordernum1 = element.getElementsByTagName("SHOP_ORDER");
 	         Element line = (Element) ordernum1.item(0);
-	          OrderNum = getCharacterDataFromElement(line);
+	          orderdetail.setOrdernum(getCharacterDataFromElement(line));
+	          
+	          NodeList material = element.getElementsByTagName("ITEM");
+		         line = (Element) material.item(0);
+		          orderdetail.setMaterial(getCharacterDataFromElement(line));
  
 	      }
-		return OrderNum;
+		
+	      return orderdetail;
         
 		
 
