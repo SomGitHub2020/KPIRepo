@@ -53,17 +53,13 @@
 	<h2>KPI Analysis</h2>
 	<div class="" align="center">
 	<div class="" align="center" style="background-color:#ffe680">
-<!-- 			<select name="site">
-		    <th:each= items="${SiteList}" var="sitelist">
-		        <option value="${sitelist.name}">${sitelist.desc}</option>
-		    </th:each=>
-			</select> -->
+
 	</div>
 			<table style="width:100%">
 				<tr>
 					<td>
 					<div class="" align="center" style="background-color:#66ffff" th:text="'Production Order: ' + ${orderdetail.ordernum}">Production Order</div>
-					<div class="" align="center" style="background-color:#660000" th:text="'Material: ' + ${orderdetail.material}">Material</div>
+					<div class="" align="center" style="background-color:#660000" th:text="'Material: ' + ${orderdetail.item}">Material</div>
 						<table id="QtyTable" class="table" style="width:100%">
 							<thead>
 								<tr>
