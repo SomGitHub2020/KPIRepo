@@ -52,10 +52,16 @@
 <div class="" align="center">
 	<h2>KPI Analysis</h2>
 	<div class="" align="center">
-	<div class="" align="right" style="background-color:#ffe680">SITE : 9999  </div>
+	<div class="" align="center" style="background-color:#ffe680">
+			<select name="site">
+		    <th:each= items="${sitelists}" var="sitelist">
+		        <option value="${sitelist.name}">${sitelist.desc}</option>
+		    </th:each=>
+			</select>
+	</div>
 			<table style="width:100%">
 				<tr>
-					<td>
+					<td>orderqty,
 					<div class="" align="center" style="background-color:#66ffff" th:text="'Production Order: ' + ${orderdetail.ordernum}">Production Order</div>
 					<div class="" align="center" style="background-color:#660000" th:text="'Material: ' + ${orderdetail.material}">Material</div>
 						<table id="QtyTable" class="table" style="width:100%">
@@ -67,7 +73,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="orderqty, rowStat: ${orderqtys}"
+								<tr th:each=" rowStat: ${orderqtys}"
 									th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
 
 									<td th:text="${orderqty.actual}">Jack</td>
