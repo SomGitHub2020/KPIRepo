@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 //import java.util.Random;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
@@ -64,8 +65,8 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		  
-		  //lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
-		  lstOees.add(new Oee("85", "73", "92"));
+		  lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+		  //lstOees.add(new Oee("85", "73", "92"));
 
 		  model.addAttribute("orderqtys", lstOrderQtys);
 		  model.addAttribute("oees", lstOees);
@@ -87,6 +88,8 @@ public class HomeController {
 		  
 		  ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		  shopOrderDetails.getOrderQuantities(lstOrderQtys);
-		  lstOees.add(new Oee("85", "73", "92"));
+		  
+		  lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
+		  //lstOees.add(new Oee("85", "73", "92"));
 	    }
 }
