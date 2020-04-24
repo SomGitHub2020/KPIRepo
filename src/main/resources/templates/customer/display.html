@@ -53,7 +53,7 @@
      <h2>KPI Analysis</h2>
      <div class="" align="center">
      <div class="" align="center" style="background-color:#ffe680">
-				<select th:field="${sitelist.site}" id="site">
+				<select id="siteDrop" name="siteDrop">
 					<option value="0">Select Site</option>
 					<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
 						th:text="${sitelist.desc}"></option>
