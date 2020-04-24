@@ -15,36 +15,40 @@
      table, th, td {
          border: 1px solid black;
      }
-     </style>
-     
-     <script type="text/javascript">
-         
-         window.onload = function() {
-             var chart = new CanvasJS.Chart("chartContainer", {
-                 title : {
-                     text : ""
-                 },
-                 data : [ {
-                     // Change type to "doughnut", "line", "splineArea", etc.
-                     type : "column",
-                     dataPoints : [ {
-                         label : "OEE",
-                         y : 57
-                     }, {
-                         label : "Availablity",
-                         y : 85
-                     }, {
-                         label : "Quality",
-                         y : 73
-                     }, {
-                         label : "Performance",
-                         y : 92
-                     } ]
-                 } ]
-             });
-             chart.render();
-         }
-     </script>
+	</style>
+		
+	<script type="text/javascript">
+		function myFunction() {
+			var x = document.getElementById("siteDrop").value;
+			document.getElementById("demo").innerHTML = x;
+		}
+	
+		window.onload = function() {
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title : {
+					text : ""
+				},
+				data : [ {
+					// Change type to "doughnut", "line", "splineArea", etc.
+					type : "column",
+					dataPoints : [ {
+						label : "OEE",
+						y : 57
+					}, {
+						label : "Availablity",
+						y : 85
+					}, {
+						label : "Quality",
+						y : 73
+					}, {
+						label : "Performance",
+						y : 92
+					} ]
+				} ]
+			});
+			chart.render();
+		}
+	</script>
 
 </head>
   
@@ -56,9 +60,16 @@
 				<select id="siteDrop" name="siteDrop">
 					<option value="0">Select Site</option>
 					<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
-						th:text="${sitelist.desc}"></option>
+						th:text="${sitelist.site}"></option>
 				</select>
 			</div>
+			
+			<div align="center">
+			<button type="button" onclick="myFunction()">View Site</button>
+
+			<p id="demo"></p>
+			</div>
+			
              <table style="width:100%">
                  <tr>
                      <td>
