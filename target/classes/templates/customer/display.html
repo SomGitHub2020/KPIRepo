@@ -53,12 +53,12 @@
      <h2>KPI Analysis</h2>
      <div class="" align="center">
      <div class="" align="center" style="background-color:#ffe680">
-				<select name="site">
-					<option value="PPME">PPME</option>
-					<option value="ELEC">ELEC</option>
-					<option value="EXI">EXID</option>
+				<select th:field="${sitelist.name}" id="site">
+					<option value="0">Select Site</option>
+					<option th:each="sitelist : ${sitelists}" th:value="${sitelist.name}"
+						th:text="${sitelist.desc}"></option>
 				</select>
-	</div>
+			</div>
              <table style="width:100%">
                  <tr>
                      <td>

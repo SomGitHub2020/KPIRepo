@@ -37,6 +37,17 @@ public class HomeController {
 	@GetMapping("/customer")
 	public String getCustomer(Model model) {
 
+		List<SiteList> lstSiteLists = new ArrayList<SiteList>();
+
+		SiteDetails sitedetails = new SiteDetails();
+		try {
+			sitedetails.getSiteList(lstSiteLists);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		List<Oee> lstOees = new ArrayList<Oee>();
 
@@ -67,6 +78,8 @@ public class HomeController {
 		//lstOees.add(new Oee(String.valueOf(new Random().nextInt(95)), String.valueOf(new Random().nextInt(75)), String.valueOf(new Random().nextInt(100))));
 		lstOees.add(new Oee("85", "73", "92"));
 
+		model.addAttribute("sitelists", lstSiteLists);
+		
 		model.addAttribute("orderqtys", lstOrderQtys);
 		model.addAttribute("oees", lstOees);
 		return "customer/display";
@@ -75,14 +88,16 @@ public class HomeController {
 
 	@PostConstruct
 	public void init() throws Exception {
-		//String ActualQty = Math.random().nextInt;
-		//random.//
-		//String ActualQty = String.valueOf(new Random().nextInt(25));
+		
+		List<SiteList> lstSiteLists = new ArrayList<SiteList>();
 
+		SiteDetails sitedetails = new SiteDetails();
+
+		sitedetails.getSiteList(lstSiteLists);
+		
 		OrderDetail orderdetail = new OrderDetail();
 		orderdetail = new ShopOrderDetails().getOrderData();
-		//orderdetail.setOrdernum(new ShopOrderDetails().getOrderData());
-
+		
 		List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		List<Oee> lstOees = new ArrayList<Oee>();
 
