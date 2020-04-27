@@ -101,6 +101,11 @@ public class HomeController {
 		SiteDetails sitedetails = new SiteDetails();
 
 		sitedetails.getSiteList(lstSiteLists);
+	
+		
+		List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
+		
+		lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
 		
 		OrderDetail orderdetail = new OrderDetail();
 		orderdetail = new ShopOrderDetails().getOrderData();
