@@ -109,4 +109,45 @@ public class ShopOrderDetails {
  
 
     }
+	public void getOrderList(List<ProdOrderList> lstProdOrderLists) throws IOException{
+		
+	       String stringURL = "http://9.220.9.130:50200/XMII/Illuminator?IsTesting=T&QueryTemplate=Default/Som/OCP_KPI/ProductionOrder/SQL_GetShopOrderList&Param.1="+new SelectedSite().getSite()+"&Content-Type=text/xml&IllumLoginName=som&IllumLoginPassword=password@1";
+	        URL url = new URL(stringURL);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        InputStream in = conn.getInputStream();
+	        DocumentBuilderFactory dbf =
+	                DocumentBuilderFactory.newInstance();
+	        DocumentBuilder db = null;
+	        try {
+	            db = dbf.newDocumentBuilder();
+	        } catch (ParserConfigurationException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	        Document doc = null;
+	        try {
+	            doc = (Document) db.parse(in);
+	        } catch (SAXException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	        NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("Row");
+	        //NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("TimeZoneResponse");
+	        // iterate the employees
+	        for (int i = 0; i < nodes.getLength(); i++) {
+	            Element element = (Element) nodes.item(i);
+	            
+	            NodeList site = element.getElementsByTagName("SITE");
+	            Element line = (Element) site.item(0);
+	            String Site = getCharacterDataFromElement(line);
+	            
+	            NodeList order = element.getElementsByTagName("SHOP_ORDER");
+	            line = (Element) order.item(0);
+	            String Order = getCharacterDataFromElement(line);
+	            lstProdOrderLists.add(new ProdOrderList(Site,Order));
+
+	            System.out.print(i);
+	        }
+		
+	}
 }

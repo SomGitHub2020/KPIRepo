@@ -53,9 +53,11 @@ public class HomeController {
 		
 		List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
 		
-		lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
-		
-		model.addAttribute("prodorderlists",lstProdOrderLists);
+		/*
+		 * lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
+		 * 
+		 * model.addAttribute("prodorderlists",lstProdOrderLists);
+		 */
 
 		
 		List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
@@ -65,6 +67,7 @@ public class HomeController {
 
 		try {
 			orderdetail = new ShopOrderDetails().getOrderData();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,8 +79,10 @@ public class HomeController {
 
 		ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		try {
+			
+			shopOrderDetails.getOrderList(lstProdOrderLists);
+			
 			shopOrderDetails.getOrderQuantities(lstOrderQtys);
-
 
 
 		} catch (IOException e) {
@@ -90,7 +95,9 @@ public class HomeController {
 
 		model.addAttribute("sitelists", lstSiteLists);
 		
+		model.addAttribute("prodorderlists",lstProdOrderLists);
 		model.addAttribute("orderqtys", lstOrderQtys);
+		
 		model.addAttribute("oees", lstOees);
 		return "customer/display";
 	}
@@ -108,7 +115,7 @@ public class HomeController {
 		
 		List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
 		
-		lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
+		/* lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST")); */
 		
 		OrderDetail orderdetail = new OrderDetail();
 		orderdetail = new ShopOrderDetails().getOrderData();
@@ -117,6 +124,8 @@ public class HomeController {
 		List<Oee> lstOees = new ArrayList<Oee>();
 
 		ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+		
+		shopOrderDetails.getOrderList(lstProdOrderLists);
 		shopOrderDetails.getOrderQuantities(lstOrderQtys);
 		lstOees.add(new Oee("85", "73", "92"));
 	}
