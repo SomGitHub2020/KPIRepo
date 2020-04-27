@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
+	private Model model;
+
 	@GetMapping
 	public String index() {
 		return "redirect:/customer";
@@ -51,7 +53,7 @@ public class HomeController {
 		
 		model.addAttribute("selectedsite",new SelectedSite());
 		
-		List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
+		
 		
 		/*
 		 * lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
@@ -80,7 +82,7 @@ public class HomeController {
 		ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		try {
 			
-			shopOrderDetails.getOrderList(lstProdOrderLists);
+			
 			
 			shopOrderDetails.getOrderQuantities(lstOrderQtys);
 
@@ -95,13 +97,33 @@ public class HomeController {
 
 		model.addAttribute("sitelists", lstSiteLists);
 		
-		model.addAttribute("prodorderlists",lstProdOrderLists);
+		
 		model.addAttribute("orderqtys", lstOrderQtys);
 		
 		model.addAttribute("oees", lstOees);
 		return "customer/display";
 	}
 
+	@PostMapping("/customer")
+	public List<ProdOrderList> prodorderlist(@ModelAttribute SelectedSite selectedsite) {
+		
+		List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
+		
+		ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
+		
+		try {
+			shopOrderDetails.getOrderList(lstProdOrderLists, selectedsite.getSite());
+			
+			model.addAttribute("prodorderlists",lstProdOrderLists);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lstProdOrderLists;
+		
+	}
 
 	@PostConstruct
 	public void init() throws Exception {
@@ -125,7 +147,7 @@ public class HomeController {
 
 		ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		
-		shopOrderDetails.getOrderList(lstProdOrderLists);
+		/* shopOrderDetails.getOrderList(lstProdOrderLists); */
 		shopOrderDetails.getOrderQuantities(lstOrderQtys);
 		lstOees.add(new Oee("85", "73", "92"));
 	}
