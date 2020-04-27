@@ -55,20 +55,33 @@
  <body>
  <div class="" align="center">
      <h2>KPI Analysis</h2>
-     <div class="" align="center">
-     <div class="" align="center" style="background-color:#ffe680">
-				<select id="siteDrop" name="siteDrop" onChange="myFunction();">
-					<option value="0">Select Site</option>
-					<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
-						th:text="${sitelist.site}"></option>
-				</select>
-				&nbsp;
-				<!-- <button type="button" onclick="myFunction()">View Data</button> -->
-				&nbsp;
-				<p id="demo"></p>
+	     <div class="" align="center">
+	     <div class="" align="center" style="background-color:#ffe680">
+			<!-- 		<select id="siteDrop" name="siteDrop" onChange="myFunction();">
+						<option value="0">Select Site</option>
+						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
+							th:text="${sitelist.site}"></option>
+					</select> -->
+					&nbsp;
+					<!-- <button type="button" onclick="myFunction()">View Data</button> -->
+					&nbsp;
+					<!-- <p id="demo"></p> -->
+
+				<form action="#" th:action="@{/customer}" th:object="${selectedsite}"
+					method="post">
+					<p>
+						SITE: <input type="text" th:field="*{site}" />
+					</p>
+					<select id="siteDrop" name="siteDrop" onChange="this.form.submit()">
+						<option value="0">Select Site</option>
+						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
+							th:text="${sitelist.site}"></option>
+					</select>
+
+				</form>
 			</div>
-			
-             <table style="width:100%">
+				
+	             <table style="width:100%">
                  <tr>
                      <td>
                      <div class="" align="center" style="background-color:#66ffff" th:text="'Production Order: ' + ${orderdetail.ordernum}">Production Order</div>
