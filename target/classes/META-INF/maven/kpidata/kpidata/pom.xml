@@ -25,12 +25,6 @@
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
   </properties>
 
-	<parent>
-	    <groupId>org.springframework.boot</groupId>
-	    <artifactId>spring-boot-starter-parent</artifactId>
-	    <version>1.5.2.RELEASE</version>
-	</parent>
-
   <dependencyManagement>
     <dependencies>
       <!-- import fabric8 platform bom first -->

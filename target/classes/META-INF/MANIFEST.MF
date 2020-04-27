@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: Fabric8 :: Quickstarts :: Spring-Boot :: WebMVC
-Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: SOMSARKAR
-Implementation-Vendor-Id: kpidata
 Build-Jdk: 1.8.0_251
-Implementation-URL: http://projects.spring.io/spring-boot/kpidata/
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 
