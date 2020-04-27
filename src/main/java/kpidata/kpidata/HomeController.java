@@ -47,6 +47,13 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("selectedsite",new SelectedSite());
+		
+		List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
+		
+		lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
+		
+		model.addAttribute("prodorderlists",lstProdOrderLists);
 		
 		List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		List<Oee> lstOees = new ArrayList<Oee>();

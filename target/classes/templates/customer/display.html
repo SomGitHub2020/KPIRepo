@@ -69,9 +69,6 @@
 
 				<form action="#" th:action="@{/customer}" th:object="${selectedsite}"
 					method="post">
-				<!-- 	<p>
-						SITE: <input type="text" th:field="*{site}" />
-					</p> -->
 					<select id="siteDrop" name="siteDrop" onChange="this.form.submit()">
 						<option value="0">Select Site</option>
 						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
@@ -84,6 +81,13 @@
 	             <table style="width:100%">
                  <tr>
                      <td>
+                     <div align="center">
+                     	<select id="orderDrop" name="orderDrop" onChange="">
+						<option value="0">Select Order</option>
+						<option th:each="prodorderlist : ${prodorderlists}" th:value="${prodorderlist.order}"
+							th:text="${prodorderlist.order}"></option>
+						</select>
+                     </div>
                      <div class="" align="center" style="background-color:#66ffff" th:text="'Production Order: ' + ${orderdetail.ordernum}">Production Order</div>
                      <div class="" align="center" style="background-color:#66ffgg" th:text="'Material: ' + ${orderdetail.item}">Material</div>
                          <table id="QtyTable" class="table" style="width:100%">
