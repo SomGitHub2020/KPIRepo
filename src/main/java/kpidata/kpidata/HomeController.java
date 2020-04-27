@@ -25,6 +25,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -54,6 +56,7 @@ public class HomeController {
 		lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
 		
 		model.addAttribute("prodorderlists",lstProdOrderLists);
+
 		
 		List<OrderQty> lstOrderQtys = new ArrayList<OrderQty>();
 		List<Oee> lstOees = new ArrayList<Oee>();
@@ -92,6 +95,19 @@ public class HomeController {
 		return "customer/display";
 	}
 
+	  @PostMapping("/customer")
+	  public String customerSubmit(@ModelAttribute SelectedSite selectedsite) {
+		  
+			/*
+			 * List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
+			 * 
+			 * lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
+			 * 
+			 * model.addAttribute("prodorderlists",lstProdOrderLists);
+			 */
+		  
+		  return "customer/display";
+	  }
 
 	@PostConstruct
 	public void init() throws Exception {
