@@ -69,9 +69,9 @@
 
 				<form action="#" th:action="@{/customer}" th:object="${selectedsite}"
 					method="post">
-					<p>
+				<!-- 	<p>
 						SITE: <input type="text" th:field="*{site}" />
-					</p>
+					</p> -->
 					<select id="siteDrop" name="siteDrop" onChange="this.form.submit()">
 						<option value="0">Select Site</option>
 						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
