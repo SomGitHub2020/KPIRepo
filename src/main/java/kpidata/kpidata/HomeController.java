@@ -95,19 +95,6 @@ public class HomeController {
 		return "customer/display";
 	}
 
-	  @PostMapping("/customer")
-	  public String customerSubmit(@ModelAttribute SelectedSite selectedsite) {
-		  
-			/*
-			 * List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
-			 * 
-			 * lstProdOrderLists.add(new ProdOrderList("PPME", "ORDER_TEST"));
-			 * 
-			 * model.addAttribute("prodorderlists",lstProdOrderLists);
-			 */
-		  
-		  return "customer/display";
-	  }
 
 	@PostConstruct
 	public void init() throws Exception {

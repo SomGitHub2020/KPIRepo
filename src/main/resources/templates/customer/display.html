@@ -45,8 +45,8 @@
 	}
 	
 		function myFunction() {
-			var x = document.getElementById("siteDrop").value;
-			document.getElementById("hiddensite").text = x;
+			var selectedSite = document.getElementById("siteDrop").value;
+			document.getElementById("hiddenSite").value = selectedSite;
 			
 			//selectedsite (that model we created).site = document.getElementById("siteDrop").value;
 		}
@@ -71,15 +71,15 @@
 					&nbsp;
 					<!-- <p id="demo"></p> -->
 
-				<form action="#" th:action="@{/customer}" th:object="${selectedsite}" method="post">
-					<select id="siteDrop" name="siteDrop" onChange="this.form.submit">
+				<!-- <form action="#" th:action="@{/customer}" th:object="${selectedsite}" method="post"> -->
+					<select id="siteDrop" name="siteDrop" onChange="myFunction();">
 						<option value="0">Select Site</option>
 						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"
 							th:text="${sitelist.site}"></option>
 					</select>
 					&nbsp;
-					 <p id="hiddensite" th:text="${selectedsite.site}"></p>
-				</form>
+					 <p id="hiddenSite" th:text="${selectedsite.site}" th:value="${selectedsite.site}"></p>
+				<!-- </form> -->
 			</div>
 				
 	             <table style="width:100%">
