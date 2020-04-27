@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Welcome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body align="center" bgcolor="#00bfff">
+	<h1>Production Order List</h1>
+	<div align="center">
+		<select id="orderDrop" name="orderDrop" onChange="">
+			<option value="0">Select Order</option>
+			<option th:each="prodorderlist : ${prodorderlists}"
+				th:value="${prodorderlist.order}" th:text="${prodorderlist.order}"></option>
+		</select>
+	</div>
+
+</body>
+</html>

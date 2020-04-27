@@ -71,7 +71,7 @@
 					&nbsp;
 					<!-- <p id="demo"></p> -->
 
-				<form action="#" th:action="@{/customer}" th:object="${selectedsite}" method="post">
+				<form action="selectSite" method="post">
 					<select id="siteDrop" name="siteDrop" onChange="myFunction();">
 						<option value="0">Select Site</option>
 						<option th:each="sitelist : ${sitelists}" th:value="${sitelist.site}"

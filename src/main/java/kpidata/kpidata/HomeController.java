@@ -104,15 +104,15 @@ public class HomeController {
 		return "customer/display";
 	}
 
-	@PostMapping("/customer")
-	public List<ProdOrderList> prodorderlist(@ModelAttribute SelectedSite selectedsite) {
+	@PostMapping("/selectSite")
+	public String showProdOrderList() {
 		
 		List<ProdOrderList> lstProdOrderLists = new ArrayList<ProdOrderList>();
 		
 		ShopOrderDetails shopOrderDetails = new ShopOrderDetails();
 		
 		try {
-			shopOrderDetails.getOrderList(lstProdOrderLists, selectedsite.getSite());
+			shopOrderDetails.getOrderList(lstProdOrderLists);
 			
 			model.addAttribute("prodorderlists",lstProdOrderLists);
 			
@@ -121,7 +121,7 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		
-		return lstProdOrderLists;
+		return "customer/test";
 		
 	}
 

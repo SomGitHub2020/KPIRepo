@@ -109,9 +109,9 @@ public class ShopOrderDetails {
  
 
     }
-	public void getOrderList(List<ProdOrderList> lstProdOrderLists, String getsite) throws IOException{
+	public void getOrderList(List<ProdOrderList> lstProdOrderLists) throws IOException{
 		
-	       String stringURL = "http://9.220.9.130:50200/XMII/Illuminator?IsTesting=T&QueryTemplate=Default/Som/OCP_KPI/ProductionOrder/SQL_GetShopOrderList&Param.1="+getsite+"&Content-Type=text/xml&IllumLoginName=som&IllumLoginPassword=password@1";
+	       String stringURL = "http://9.220.9.130:50200/XMII/Illuminator?IsTesting=T&QueryTemplate=Default/Som/OCP_KPI/ProductionOrder/SQL_GetShopOrderList&Param.1="+new SelectedSite().getSite()+"&Content-Type=text/xml&IllumLoginName=som&IllumLoginPassword=password@1";
 	        URL url = new URL(stringURL);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	        InputStream in = conn.getInputStream();
