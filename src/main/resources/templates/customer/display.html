@@ -46,7 +46,7 @@
 	
 		function myFunction() {
 			var selectedSite = document.getElementById("siteDrop").value;
-			document.getElementById("hiddenSite").value = selectedSite;
+			document.getElementById("hiddenSite").text = selectedSite;
 			
 			//selectedsite (that model we created).site = document.getElementById("siteDrop").value;
 		}
@@ -78,7 +78,7 @@
 							th:text="${sitelist.site}"></option>
 					</select>
 					&nbsp;
-					 <p id="hiddenSite" th:text="${selectedsite.site}" th:value="${selectedsite.site}"></p>
+					 <p id="hiddenSite" th:text="${selectedsite.site}" ></p>
 				<!-- </form> -->
 			</div>
 				
